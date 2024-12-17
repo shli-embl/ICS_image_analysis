@@ -1,0 +1,27 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake=7.16.0
+  - python=3.9
+  - pandas=
+  - perl-bioperl
+  - r-base>=4.0
+  - r-optparse
+  - r-tidyverse
+  - r-gridextra
+  - r-umap
+  - r-ggplotify
+  - r-ggdendro
+  - r-pheatmap
+  - r-rpart
+  - r-rpart.plot
+  - r-dplyr
+  - r-caret
+  - bioconductor-flowcore
+  - bioconductor-cytoml
+  - bioconductor-flowworkspace
+  - pip
+  - pip:
+    - readfcs
+	- flowkit

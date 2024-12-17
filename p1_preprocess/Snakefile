@@ -1,0 +1,98 @@
+import os
+import pandas as pd
+
+configfile: "inputs/input.yaml"
+units = pd.read_table(config["samplesheet"], dtype=str).set_index(["id"], drop=False)
+SAMPLES = units.index.get_level_values('id').unique().tolist()
+TMPDIR = config["tmp_dir"]
+RESULTDIR = config["output_dir"]
+
+def get_fcs(wildcards):
+    return units.loc[wildcards.sample,"FCS"]
+
+def get_wsp(wildcards):
+    return units.loc[wildcards.sample,"WSP"]
+
+def get_proid(wildcards):
+    return units.loc[wildcards.sample,"protein_id"]
+
+def get_batch(wildcards):
+    return units.loc[wildcards.sample,"batch"]
+
+def get_image_path(wildcards):
+    return units.loc[wildcards.sample, "image_folder"]
+
+def get_image_prefix(wildcards):
+    return units.loc[wildcards.sample, "image_file_prefix"]
+
+onstart:
+    print("##### Creating profile pipeline #####\n") 
+    print("\t Creating jobs output subfolders...\n")
+    shell("mkdir -p jobs/all")
+    shell("mkdir -p jobs/CallFlowCytoTable")
+    shell("mkdir -p jobs/DownSampling")
+    shell("mkdir -p jobs/AddImagePath")
+    shell("mkdir -p jobs/MergeTable")
+#    shell("mkdir -p jobs/predictTree")
+
+rule all:
+    input:
+        RESULTDIR + "/data/" + "all_tag_libs.ds.tsv"
+#        expand(RESULTDIR + "/tables/" + "{sample}.img_path.tsv", sample = SAMPLES)
+##        expand(RESULTDIR + "/tables/" + "{sample}.tsv", sample = SAMPLES),
+#        RESULTDIR + "/data/" + "datatable.ds.tsv",
+#        expand(RESULTDIR + "/downsample_tables/" + "{sample}.ds.tsv", sample = SAMPLES)
+#         RESULTDIR + "/data/dc_trees/" + "k5.predict.txt",
+#         RESULTDIR + "/data/dc_trees/" + "k6.predict.txt",
+ #        RESULTDIR + "/data/dc_trees/" + "k13.predict.txt",
+#         RESULTDIR + "/data/dc_trees/" + "light.predict.txt",
+ #        RESULTDIR + "/data/dc_trees/" + "comp.predict.txt",
+
+rule CallFlowCytoTable:
+    input:
+        fcs = get_fcs,
+        wsp = get_wsp
+    output:
+        RESULTDIR + "/tables/" + "{sample}.tsv"
+    threads: 1
+    shell:
+        "python python/convert_fcs_to_tsv.py {input.fcs} {input.wsp} {output}"
+
+rule DownSampling:
+    input:
+        fset = config["feature_set"],
+        tsv = RESULTDIR + "/tables/" + "{sample}.tsv"
+    output:
+        RESULTDIR + "/downsample_tables/" + "{sample}.ds.tsv"
+    threads: 1
+    params:
+        n = 1000,
+        image_path = lambda wildcards: get_image_path(wildcards),
+        image_prefix = lambda wildcards: get_image_prefix(wildcards)
+    shell:
+        "./R/downsampling.R -i {input.tsv} -s {input.fset} -o {output} -n {params.n} -f {params.image_path} -p {params.image_prefix}"
+
+rule AddImagePath:
+    input:
+        RESULTDIR + "/tables/" + "{sample}.tsv"
+    output:
+        RESULTDIR + "/tables/" + "{sample}.img_path.tsv"
+    threads: 1
+    params:
+        image_path = lambda wildcards: get_image_path(wildcards),
+        image_prefix = lambda wildcards: get_image_prefix(wildcards)
+    shell:
+        "./R/add_image_path.R -i {input} -o {output} -f {params.image_path} -p {params.image_prefix}"
+
+
+rule MergeTable:
+    input:
+        tsvs = expand(RESULTDIR + "/downsample_tables/" + "{sample}.ds.tsv", sample = SAMPLES),
+        meta = config["samplesheet"]
+    output:
+        RESULTDIR + "/data/" + "all_tag_libs.ds.tsv"
+    threads: 1
+    params:
+        workdir = RESULTDIR + "/downsample_tables/"
+    shell:
+        "./R/merge_table.R -m {input.meta} -f {params.workdir} -o {output}"

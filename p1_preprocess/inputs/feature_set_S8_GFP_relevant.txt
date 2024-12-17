@@ -1,0 +1,17 @@
+col_name	log_scale
+NeonGreen.A	1
+Size..NeonGreen.FITC.	1
+Max.Intensity..NeonGreen.FITC.	1
+Long.Axis.Moment..NeonGreen.FITC.	0
+Short.Axis.Moment..NeonGreen.FITC.	0
+Center.of.Mass..Y...NeonGreen.FITC.	0
+Center.of.Mass..X...NeonGreen.FITC.	0
+Total.Intensity..NeonGreen.FITC.	1
+Correlation..NeonGreen.FITC.DRAQ5..	0
+Radial.Moment..NeonGreen.FITC.	0
+Eccentricity..NeonGreen.FITC.	0
+Diffusivity..NeonGreen.FITC.	1
+Delta.CoM..SSC..Imaging..NeonGreen.FITC.	0
+Delta.CoM..LightLoss..Imaging..NeonGreen.FITC.	0
+Delta.CoM..FSC.NeonGreen.FITC.	0
+Delta.CoM..NeonGreen.FITC.DRAQ5..	0

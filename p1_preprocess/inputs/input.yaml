@@ -1,0 +1,7 @@
+---
+samplesheet: 'inputs/samples.txt'
+tmp_dir: '/scratch/shli/icstag_2_tmp'
+output_dir: '/scratch/shli/icstag_2'
+colnames: 'inputs/col_names.txt'
+localization: 'inputs/localization.txt'
+feature_set: 'inputs/feature_set_S8.txt'

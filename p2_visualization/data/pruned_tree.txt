@@ -1,0 +1,31 @@
+param	threshold	hc_k13b8	hc_k33b3	km_k25b8	hc_k6b8	hc_k11b10	hc_k7b9	hc_k15b3	hc_k35b1	hc_k40b4	km_k27b2
+Correlation..NeonGreen.FITC.DRAQ5..	0.11			<							
+Correlation..NeonGreen.FITC.DRAQ5..	0.16					>					
+Correlation..NeonGreen.FITC.DRAQ5..	0.31									<	
+Correlation..NeonGreen.FITC.DRAQ5..	0.4							>			
+Correlation..NeonGreen.FITC.DRAQ5..	0.41	>									
+Correlation..NeonGreen.FITC.DRAQ5..	0.48										<
+Correlation..NeonGreen.FITC.DRAQ5..	0.82								<		
+Correlation..NeonGreen.FITC.DRAQ5..	0.85		>								
+Delta.CoM..SSC..Imaging..NeonGreen.FITC.	0.66				<						
+Diffusivity..NeonGreen.FITC.	40	<									
+Diffusivity..NeonGreen.FITC.	41							>			
+Diffusivity..NeonGreen.FITC.	52		>								
+Diffusivity..NeonGreen.FITC.	62									<	
+Diffusivity..NeonGreen.FITC.	63						<				
+Max.Intensity..NeonGreen.FITC.	448						<				
+Max.Intensity..NeonGreen.FITC.	499		>								
+Max.Intensity..NeonGreen.FITC.	579				<						
+Max.Intensity..NeonGreen.FITC.	1060							<			
+Max.Intensity..NeonGreen.FITC.	1346										<
+NeonGreen.A	146000				<						
+Radial.Moment..NeonGreen.FITC.	20			>							
+Short.Axis.Moment..NeonGreen.FITC.	6				>						
+Size..NeonGreen.FITC.	1					<					
+Size..NeonGreen.FITC.	2			<	>						
+Size..NeonGreen.FITC.	4									>	
+Size..NeonGreen.FITC.	6						>				
+Size..NeonGreen.FITC.	58				<						
+Size..NeonGreen.FITC.	66										>
+Total.Intensity..NeonGreen.FITC.	96000			<					>		
+Total.Intensity..NeonGreen.FITC.	97000									<	

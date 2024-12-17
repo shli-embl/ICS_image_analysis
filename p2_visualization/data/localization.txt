@@ -1,0 +1,58 @@
+Protein_id	Cell_junctions	Plasma_membrane	Cytostol	Cytoskeleton	Mitochondria	Golgi	ER	Vesicles	Endosomes	Lysosomes	Lipid_droplets	Nuclear_membrane	Nucleoplasm	Nuclear_bodies	Nucleoli	Nucleoli_fibrillar_center	Nuclear_speckles
+ACTB		1		1													
+ACTN4			1	1													
+ACTR2			1														
+ARF1		1	1			1											
+ATG3		1	1														
+ATP1B3		1															
+CDH2	1	1															
+CANX							1										
+CCR-NOT			1										1				
+CERK								1									
+CLTA			1			1		1	1	1							
+CLTC									1	1							
+COIL													1	1	1	1	
+CTDNEP1											1						
+DDX21													1		1		
+DDX6			1														
+DERL1							1										
+DSG2	1																
+EDC4			1					1					1				
+EGFR	1	1															
+EMD							1					1					
+EPHX2			1														
+ERBIN		1															1
+ERV3-1			1			1		1									
+EZR		1															
+GJA1	1							1					1				
+GOLGA2						1											
+GOLGA5						1											
+H2BC1															1		
+HNRNPA1													1				
+HP1BP3																	1
+IDH3B					1												
+IER3IP1							1										
+KRT19				1													
+LAMP1										1							
+LEMD2												1					
+LMNA												1					1
+LMNB1												1					
+MAPRE3				1													
+NOP56																1	
+OCLN	1	1															
+OPTN			1														
+PCNA													1				
+POGZ													1				
+POM121												1	1				
+PRDX1					1												
+RAB11A								1									
+RAD21													1				
+SERF1A														1			
+SLC16A1	1	1						1									
+TUBA1C				1													
+TOMM20					1												
+TOMM70					1												
+ULK1			1				1	1									
+VIM				1													
+WRAP53			1										1	1			
+ZYX		1		1													
