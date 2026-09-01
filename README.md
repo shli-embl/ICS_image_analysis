@@ -9,6 +9,8 @@ run 'conda env create -n {your_env_name} -f envs/environment.yaml' to create env
 A snakemake pipeline is provided. 
 Dry run: 'snakemake -n'
 
+tutorial
+
 ## 3. Data visualization and gate finding
 Individual bash scripts are provided for different analytic steps:
 1_plot_umap.sh: Generate UMAP of recorded cells from 50 training tag populations.
