@@ -31,22 +31,11 @@ onstart:
     shell("mkdir -p jobs/all")
     shell("mkdir -p jobs/CallFlowCytoTable")
     shell("mkdir -p jobs/DownSampling")
-    shell("mkdir -p jobs/AddImagePath")
     shell("mkdir -p jobs/MergeTable")
-#    shell("mkdir -p jobs/predictTree")
 
 rule all:
     input:
         RESULTDIR + "/data/" + "all_tag_libs.ds.tsv"
-#        expand(RESULTDIR + "/tables/" + "{sample}.img_path.tsv", sample = SAMPLES)
-##        expand(RESULTDIR + "/tables/" + "{sample}.tsv", sample = SAMPLES),
-#        RESULTDIR + "/data/" + "datatable.ds.tsv",
-#        expand(RESULTDIR + "/downsample_tables/" + "{sample}.ds.tsv", sample = SAMPLES)
-#         RESULTDIR + "/data/dc_trees/" + "k5.predict.txt",
-#         RESULTDIR + "/data/dc_trees/" + "k6.predict.txt",
- #        RESULTDIR + "/data/dc_trees/" + "k13.predict.txt",
-#         RESULTDIR + "/data/dc_trees/" + "light.predict.txt",
- #        RESULTDIR + "/data/dc_trees/" + "comp.predict.txt",
 
 rule CallFlowCytoTable:
     input:
@@ -71,19 +60,6 @@ rule DownSampling:
         image_prefix = lambda wildcards: get_image_prefix(wildcards)
     shell:
         "./R/downsampling.R -i {input.tsv} -s {input.fset} -o {output} -n {params.n} -f {params.image_path} -p {params.image_prefix}"
-
-rule AddImagePath:
-    input:
-        RESULTDIR + "/tables/" + "{sample}.tsv"
-    output:
-        RESULTDIR + "/tables/" + "{sample}.img_path.tsv"
-    threads: 1
-    params:
-        image_path = lambda wildcards: get_image_path(wildcards),
-        image_prefix = lambda wildcards: get_image_prefix(wildcards)
-    shell:
-        "./R/add_image_path.R -i {input} -o {output} -f {params.image_path} -p {params.image_prefix}"
-
 
 rule MergeTable:
     input:

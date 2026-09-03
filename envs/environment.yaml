@@ -4,7 +4,8 @@ channels:
 dependencies:
   - snakemake=7.16.0
   - python=3.9
-  - pandas=
+  - pandas
+  - ipykernel
   - perl-bioperl
   - r-base>=4.0
   - r-optparse
@@ -24,4 +25,4 @@ dependencies:
   - pip
   - pip:
     - readfcs
-	- flowkit
+    - flowkit
